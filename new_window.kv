@@ -1,0 +1,126 @@
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+    ThirdWindow:
+    #FourthWindow:
+    #FifthWindow:
+
+<FirstWindow>:
+    name: "first"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: 50
+        spacing: 20
+
+        Label:
+            text: "First Screen"
+            fontSize: 32
+        
+        Button:
+            text: "Get a perfect recepie"
+            fontSize: 32
+            size_hint: (1,0.5)
+            bold: True
+            background_color: '#c77dff'
+            on_release: 
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "Get a fitting wine"
+            fontSize: 32
+            size_hint: (1,0.5)
+            bold: True
+            background_color: '#c77dff'
+            on_release: 
+                app.root.current = "third"
+                root.manager.transition.direction = "right"
+
+<SecondWindow>:
+    name: "second"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: 50
+        spacing: 20
+
+        Label:
+            text: "Get a perfect recepie"
+            font_size: 28
+        
+        Label:
+            text: "What would you like to eat?"
+            font_size: 16
+        
+        TextInput:
+            id: food_type
+            multiline: False
+            size_hint: (1, 0.5)
+        
+        Button:
+            text: "Get recepie"
+            fontSize: 32
+            pos_hint: {'center_x': 0.5}
+            size_hint: (0.5,0.5)
+            bold: True
+            background_color: '#c77dff'
+            on_release: 
+                root.dish_search(food_type.text)
+                #app.root.current = "fourth"
+                #root.manager.transition.direction = "up"
+
+        Button:
+            text: "Go Back"
+            fontSize: 32
+            pos_hint: {'center_x': 0.5}
+            size_hint: (0.5,0.5)
+            background_color: '#c77dff'
+            on_release: 
+                app.root.current = "first"
+                root.manager.transition.direction = "right"
+
+<ThirdWindow>:
+    name: "third"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: 50
+        spacing: 20
+        
+        Label:
+            name: "label"
+            text: "Get a description"
+            fontSize: 32
+            
+        TextInput:
+            id: wine_name
+            multiline: False
+            size_hint: (1, 0.5)
+        
+        Button:
+            text: "Get wine"
+            fontSize: 32
+            pos_hint: {'center_x': 0.5}
+            size_hint: (0.5,0.5)
+            bold: True
+            background_color: '#c77dff'
+            on_release: 
+                #app.root.current = "fifth"
+                root.wine_description(wine_name.text)
+                
+                #root.manager.transition.direction = "up"
+        
+        Button:
+            text: "Go Back"
+            fontSize: 32
+            pos_hint: {'center_x': 0.5}
+            size_hint: (0.5,0.5)
+            bold: True
+            background_color: '#c77dff'
+            on_release: 
+                app.root.current = "first"
+                root.manager.transition.direction = "left"
+
