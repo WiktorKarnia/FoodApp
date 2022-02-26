@@ -3,7 +3,7 @@ from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
-from kivy.uix.image import Image
+from kivy.uix.image import Image, AsyncImage
 from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.lang import Builder
@@ -23,11 +23,15 @@ class SecondWindow(Screen):
     
     def dish_search(self,food_type):
         self.clear_widgets()
+        self.logo = Image(
+                    source = 'logo.png',
+                    )
+        self.add_widget(self.logo)
         self.go_back_btn = Button(
                             text="Go back",
                             font_size=32,
-                            pos_hint={'center_x':0.5},
-                            size_hint=(0.5,0.5),
+                            pos_hint={'center_x':0.5, 'center_y':0.1},
+                            size_hint=(0.5,0.2),
                             background_color= '#c77dff'
                             )
         
@@ -36,20 +40,23 @@ class SecondWindow(Screen):
         try:
             response = api.search_recipes_complex(food_type)
             data = response.json()
-            print(data)
+            #print(data)
             self.response = Label(
-                            text = data['title'][1],
-                            font_size= 18,
-                            color= '#00FFCE'
+                            text = data['results'][0]['title'],
+                            pos_hint={'center_x':0.5, 'center_y':0.8},
+                            font_size= 18
                             )
             self.add_widget(self.response)
-            self.jpg_response = data['image'][0]
-            self.add_widget(Image(source=self.jpg_response)) #idk why it won't work ;-; but at least wine works for now 
+            self.jpg_response = data['results'][0]['image']
+            #print(self.jpg_response)
+            self.add_widget(AsyncImage(
+                            source=self.jpg_response,
+                            pos_hint={'center_x':0.5, 'center_y':0.5}
+                            ))
         except Exception:
             self.response = Label(
                             text = "Something went wrong, please try again.",
-                            font_size= 18,
-                            color= '#00FFCE'
+                            font_size= 18
                             )
             self.add_widget(self.response)
     
@@ -59,11 +66,15 @@ class ThirdWindow(Screen):
     
     def wine_description(self, wine_name):
         self.clear_widgets()
+        self.logo = Image(
+                    source = 'logo.png',
+                    )
+        self.add_widget(self.logo)
         self.go_back_btn = Button(
                             text="Go back",
                             font_size=32,
                             pos_hint={'center_x':0.5},
-                            size_hint=(1,0.5),
+                            size_hint=(0.5,0.2),
                             background_color= '#c77dff'
                             )
         
@@ -72,18 +83,16 @@ class ThirdWindow(Screen):
         try:
             response = api.get_wine_description(wine_name)
             data = response.json()
-            print(data['wineDescription'])
+            #print(data['wineDescription'])
             self.response = Label(
                             text = data['wineDescription'],
-                            font_size= 18,
-                            color= '#00FFCE'
+                            font_size= 18
                             )
             self.add_widget(self.response)
         except Exception:
             self.response = Label(
                             text = "Something went wrong, please try again.",
-                            font_size= 18,
-                            color= '#00FFCE'
+                            font_size= 18
                             )
             self.add_widget(self.response)
 

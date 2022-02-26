@@ -14,12 +14,20 @@ WindowManager:
         padding: 50
         spacing: 20
 
+        Image:
+            source: "logo.png"
+
         Label:
-            text: "First Screen"
-            fontSize: 32
+            text: "Have you ever had a problem with coming up with what to eat for dinner \n or maybe you wanted to know more about the wine you're drinking? "
+            fontSize: 22
         
+        Label:
+            text: "If so this app is perfect for you."
+            fontSize: 22
+            bold: True
+
         Button:
-            text: "Get a perfect recepie"
+            text: "Get a dish idea"
             fontSize: 32
             size_hint: (1,0.5)
             bold: True
@@ -28,7 +36,7 @@ WindowManager:
                 app.root.current = "second"
                 root.manager.transition.direction = "left"
         Button:
-            text: "Get a fitting wine"
+            text: "Get a wine description"
             fontSize: 32
             size_hint: (1,0.5)
             bold: True
@@ -46,8 +54,11 @@ WindowManager:
         padding: 50
         spacing: 20
 
+        Image:
+            source: "logo.png"
+        
         Label:
-            text: "Get a perfect recepie"
+            text: "Get a perfect dinner idea"
             font_size: 28
         
         Label:
@@ -60,10 +71,10 @@ WindowManager:
             size_hint: (1, 0.5)
         
         Button:
-            text: "Get recepie"
+            text: "Get an idea"
             fontSize: 32
             pos_hint: {'center_x': 0.5}
-            size_hint: (0.5,0.5)
+            size_hint: (0.75,0.5)
             bold: True
             background_color: '#c77dff'
             on_release: 
@@ -75,7 +86,7 @@ WindowManager:
             text: "Go Back"
             fontSize: 32
             pos_hint: {'center_x': 0.5}
-            size_hint: (0.5,0.5)
+            size_hint: (0.75,0.5)
             background_color: '#c77dff'
             on_release: 
                 app.root.current = "first"
@@ -90,10 +101,16 @@ WindowManager:
         padding: 50
         spacing: 20
         
+        Image:
+            source: "logo.png"
+        
         Label:
-            name: "label"
-            text: "Get a description"
-            fontSize: 32
+            text: "Get a wine description"
+            font_size: 28
+        
+        Label:
+            text: "What wine are you drinking?"
+            font_size: 16
             
         TextInput:
             id: wine_name
@@ -101,10 +118,10 @@ WindowManager:
             size_hint: (1, 0.5)
         
         Button:
-            text: "Get wine"
+            text: "Description"
             fontSize: 32
             pos_hint: {'center_x': 0.5}
-            size_hint: (0.5,0.5)
+            size_hint: (0.75,0.5)
             bold: True
             background_color: '#c77dff'
             on_release: 
@@ -117,7 +134,7 @@ WindowManager:
             text: "Go Back"
             fontSize: 32
             pos_hint: {'center_x': 0.5}
-            size_hint: (0.5,0.5)
+            size_hint: (0.75,0.5)
             bold: True
             background_color: '#c77dff'
             on_release: 
