@@ -1,5 +1,5 @@
 import spoonacular as sp
-api = sp.API("91d7f957e7f0445f8c8f1fd554afbc51")
+api = sp.API("api_key")
 
 def dish_search():
     q = input("Tell me what you want: ")
