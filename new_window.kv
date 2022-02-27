@@ -1,9 +1,13 @@
 WindowManager:
     FirstWindow:
     SecondWindow:
+        id: dish
+        name: "second"
     ThirdWindow:
-    #FourthWindow:
-    #FifthWindow:
+        id: wine
+        name:"third"
+    FourthWindow:
+    FifthWindow:
 
 <FirstWindow>:
     name: "first"
@@ -36,7 +40,7 @@ WindowManager:
                 app.root.current = "second"
                 root.manager.transition.direction = "left"
         Button:
-            text: "Get a wine description"
+            text: "Pair a wine to your dish"
             fontSize: 32
             size_hint: (1,0.5)
             bold: True
@@ -46,7 +50,7 @@ WindowManager:
                 root.manager.transition.direction = "right"
 
 <SecondWindow>:
-    name: "second"
+
 
     BoxLayout:
         orientation: "vertical"
@@ -78,7 +82,8 @@ WindowManager:
             bold: True
             background_color: '#c77dff'
             on_release: 
-                root.dish_search(food_type.text)
+                app.root.current = "fourth"    
+                #root.dish_search(food_type.text)
                 #app.root.current = "fourth"
                 #root.manager.transition.direction = "up"
 
@@ -87,6 +92,7 @@ WindowManager:
             fontSize: 32
             pos_hint: {'center_x': 0.5}
             size_hint: (0.75,0.5)
+            bold: True
             background_color: '#c77dff'
             on_release: 
                 app.root.current = "first"
@@ -105,28 +111,28 @@ WindowManager:
             source: "logo.png"
         
         Label:
-            text: "Get a wine description"
+            text: "Get a wine paring"
             font_size: 28
         
         Label:
-            text: "What wine are you drinking?"
+            text: "What food are you eating?"
             font_size: 16
             
         TextInput:
-            id: wine_name
+            id: dish_type
             multiline: False
             size_hint: (1, 0.5)
         
         Button:
-            text: "Description"
+            text: "Get a pair"
             fontSize: 32
             pos_hint: {'center_x': 0.5}
             size_hint: (0.75,0.5)
             bold: True
             background_color: '#c77dff'
             on_release: 
-                #app.root.current = "fifth"
-                root.wine_description(wine_name.text)
+                app.root.current = "fifth"
+                #root.wine_description(wine_name.text)
                 
                 #root.manager.transition.direction = "up"
         
@@ -140,4 +146,22 @@ WindowManager:
             on_release: 
                 app.root.current = "first"
                 root.manager.transition.direction = "left"
+
+<FourthWindow>:
+    name: "fourth"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: 50
+        spacing: 20
+
+<FifthWindow>:
+    name: "fifth"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: 50
+        spacing: 20
 
