@@ -105,6 +105,7 @@ class FifthWindow(Screen):
     def on_pre_enter(self, *args):
         self.wine_paring(self.manager.ids.wine.ids.dish_type.text)
     
+    
     def wine_paring(self, dish):
         self.clear_widgets()
         self.logo = Image(
@@ -150,7 +151,7 @@ class FifthWindow(Screen):
             if(len(data['productMatches'])!=0):
                 self.recommendation = Label(
                                         text = data['productMatches'][0]['title'],
-                                        font_size= 14,
+                                        font_size= 16,
                                         bold= True,
                                         pos_hint= {'center_x':0.5, 'center_y':0.58},
                                      )
@@ -158,7 +159,7 @@ class FifthWindow(Screen):
                 self.recommendation_description = self.WrappedLabel(
                                         text = data['productMatches'][0]['description'],
                                         size_hint=(0.75, None),
-                                        pos_hint= {'center_x':0.5, 'center_y':0.5},
+                                        pos_hint= {'center_x':0.5, 'center_y':0.4},
                                         halign='center',
                                         font_size= 14
                                      )
@@ -166,6 +167,7 @@ class FifthWindow(Screen):
                 #self.wine_url = data['productMatches'][0]['link']
                 #print(self.wine_url)
                 #self.wine_website.bind(on_click=print(self.wine_url))
+                
             else:
                 self.provideMoreInfo = Label(
                                 text = "Please give more detailed information about your dish.",
@@ -186,9 +188,9 @@ class WindowManager(ScreenManager):
 
 kv = Builder.load_file('new_window.kv')
 
-class DishApp(App):
+class LetsEatApp(App):
     def build(self):
         return kv
         
 if __name__ == "__main__":
-    DishApp().run()
+    LetsEatApp().run()

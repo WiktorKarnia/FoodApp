@@ -22,7 +22,8 @@ WindowManager:
             source: "logo.png"
 
         Label:
-            text: "Have you ever had a problem with coming up with what to eat for dinner \n or maybe you wanted to know more about the wine you're drinking? "
+            text: "Have you ever had a problem with coming up with what to eat for dinner \n or maybe you wanted to know what wine will fit your dinner? "
+            halign: "center"
             fontSize: 22
         
         Label:
@@ -83,9 +84,7 @@ WindowManager:
             background_color: '#c77dff'
             on_release: 
                 app.root.current = "fourth"    
-                #root.dish_search(food_type.text)
-                #app.root.current = "fourth"
-                #root.manager.transition.direction = "up"
+
 
         Button:
             text: "Go Back"
@@ -132,9 +131,6 @@ WindowManager:
             background_color: '#c77dff'
             on_release: 
                 app.root.current = "fifth"
-                #root.wine_description(wine_name.text)
-                
-                #root.manager.transition.direction = "up"
         
         Button:
             text: "Go Back"
