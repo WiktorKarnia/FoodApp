@@ -166,7 +166,7 @@ class FifthWindow(Screen):
                 self.add_widget(self.recommendation_description)
                 #self.wine_url = data['productMatches'][0]['link']
                 #print(self.wine_url)
-                #self.wine_website.bind(on_click=print(self.wine_url))
+                #self.wine_website.bind(on_click=self.open_website(self.wine_url))
                 
             else:
                 self.provideMoreInfo = Label(
